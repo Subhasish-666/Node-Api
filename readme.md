@@ -1,25 +1,12 @@
-# 📌 Node.js Event & Nudge API (Intern Assignment)
+# 📌 Node.js API
 
-This repository contains a **Node.js backend implementation** for **Event APIs** and **Nudge API documentation**, built as part of a **Node.js Intern technical assignment**.
+This repository contains a **Node.js backend implementation** for **Event APIs** and **Nudge API documentation**.
 
 The project focuses on:
 - Reading API documentation
 - Implementing APIs using **MongoDB native driver**
 - Writing clear **API documentation**
 - Following **schema-independent design**
-
----
-
-## 🧠 Assignment Overview
-
-### **Position**
-- Node.js Intern
-
-### **Required Skills**
-- JavaScript
-- Node.js
-- Express
-- MongoDB (Native Driver)
 
 ---
 
@@ -32,7 +19,9 @@ The project focuses on:
 - **Postman (for testing)**
 
 ---
+## VIDEO EXPLAINATION:
 
+---
 ## 📁 Project Structure
 
 ```bash
@@ -49,7 +38,10 @@ node-api/
 ```
 
 ---
-
+## Inatalling MongoDB in system Link:
+```bash
+https://www.mongodb.com/try/download/community
+```
 ## 🚀 Step 1: Setup the Project
 
 ### 1️⃣ Clone the repository
@@ -60,7 +52,8 @@ cd node-api
 
 ### 2️⃣ Install dependencies
 ```bash
-npm install
+npm init -y
+npm install express mongodb dotenv
 ```
 
 ### 3️⃣ Environment variables (`.env`)
@@ -70,13 +63,19 @@ DB_NAME=nodebb
 ```
 
 ---
-
-## 🗄 Step 2: Start MongoDB
+## 🗄 Step 2: create a DB directory
 
 ```bash
-mongod --dbpath src/db --port 27017
+cd Node-Api
 ```
+```bash
+mkdir src/db
+```
+## 🗄 Step 3: Start MongoDB
 
+```bash
+mongod --dbpath src/db
+```
 Make sure MongoDB is running before starting the server.
 
 ---
@@ -84,13 +83,13 @@ Make sure MongoDB is running before starting the server.
 ## ▶️ Step 3: Start the Server
 
 ```bash
-npm start
+node server.js
 ```
 
 Expected output:
 ```
 MongoDB Connected
-Server running on port 8000
+Server running on port 3000
 ```
 
 ---
@@ -107,23 +106,18 @@ Server running on port 8000
 ### 📄 Event Data Model (Schema-Independent)
 
 ```json
-{
-  "type": "event",
-  "name": "Node Workshop",
-  "tagline": "Learn Node.js",
-  "schedule": {
-    "start": "2026-01-05T10:00:00Z",
-    "end": "2026-01-05T13:00:00Z"
-  },
-  "files": {
-    "image": "image_url"
-  },
-  "description": "Hands-on workshop",
-  "moderator": "Admin",
-  "category": "tech",
-  "sub_category": "backend",
-  "rigor_rank": 8
-}
+type:"event"
+uid:18 (user id)
+name: Name of the event
+tagline: A proper tag-line for the event
+schedule: (Date + time) Timestamp
+description: String
+files[image]: Image file (File upload)
+moderator: A user who is going to host
+category: Category of the event
+sub_category: Sub category
+rigor_rank: Integer value
+attendees: Array of user Id's who is attending the event
 ```
 
 ---
@@ -213,27 +207,27 @@ A **Nudge** is a lightweight content unit used to promote an **event or article*
 ## 📌 Nudge APIs (Documentation)
 
 ### ➕ Create Nudge
-**POST** `/api/v3/app/events`
+**POST** `/api/v3/app/Nudge`
 
 ---
 
 ### 📄 Get Nudges
-**GET** `/api/v3/app/events?page=1&limit=10`
+**GET** `/api/v3/app/Nudge?page=1&limit=10`
 
 ---
 
 ### 📄 Get Nudge by ID
-**GET** `/api/v3/app/events?id=:nudge_id`
+**GET** `/api/v3/app/Nudge?id=:nudge_id`
 
 ---
 
 ### ✏️ Update Nudge
-**PUT** `/api/v3/app/events/:nudge_id`
+**PUT** `/api/v3/app/Nudge/:nudge_id`
 
 ---
 
 ### ❌ Delete Nudge
-**DELETE** `/api/v3/app/events/:nudge_id`
+**DELETE** `/api/v3/app/Nudge/:nudge_id`
 
 ---
 
