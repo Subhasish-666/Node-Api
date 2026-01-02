@@ -1,4 +1,4 @@
-# 📌 Node.js API
+#  Node.js API
 
 This repository contains a **Node.js backend implementation** for **Event APIs** and **Nudge API documentation**.
 
@@ -10,7 +10,7 @@ The project focuses on:
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - **Node.js**
 - **Express.js**
@@ -22,19 +22,23 @@ The project focuses on:
 ## VIDEO EXPLAINATION:
 
 ---
-## 📁 Project Structure
+##  Project Structure
 
 ```bash
-node-api/
-├── controllers/
-│   └── event.controller.js
-├── routes/
-│   └── event.routes.js
-├── db.js
-├── server.js
-├── .env
+Node-Api
+├── node_modules
 ├── package.json
-└── README.md
+├── package-lock.json
+├── server.js
+├── src
+   ├── collection
+   │   └── collection.js
+   ├── db
+   ├── db.js
+   ├── middleware
+   │   └── upload.js
+   └── routes
+       └── routes.js
 ```
 
 ---
@@ -44,26 +48,43 @@ https://www.mongodb.com/try/download/community
 ```
 ## 🚀 Step 1: Setup the Project
 
-### 1️⃣ Clone the repository
+### 1️ Clone the repository
 ```bash
 git clone <your-repo-url>
 cd node-api
 ```
 
-### 2️⃣ Install dependencies
+### 2️ Install dependencies
 ```bash
 npm init -y
 npm install express mongodb dotenv
 ```
+After installation change in `package.json`
+From:
+```bash
+"main": "index.js",
+"scripts": {
+"test": "echo \"Error: no test specified\" && exit 1"
+}
+```
+TO
+```
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+```
+---
 
-### 3️⃣ Environment variables (`.env`)
+### 3️ Environment variables (`.env`)
 ```env
 MONGO_URI=mongodb://127.0.0.1:27017
 DB_NAME=nodebb
 ```
 
 ---
-## 🗄 Step 2: create a DB directory
+##  Step 2: create a DB directory
 
 ```bash
 cd Node-Api
@@ -71,7 +92,7 @@ cd Node-Api
 ```bash
 mkdir src/db
 ```
-## 🗄 Step 3: Start MongoDB
+##  Step 3: Start MongoDB
 
 ```bash
 mongod --dbpath src/db
@@ -80,7 +101,7 @@ Make sure MongoDB is running before starting the server.
 
 ---
 
-## ▶️ Step 3: Start the Server
+## ▶️ Step 4: Start the Server
 
 ```bash
 node server.js
@@ -94,16 +115,16 @@ Server running on port 3000
 
 ---
 
-## 📌 Task 1 – Event API Creation
+##  Task 1 – Event API Creation
 
-### 🔗 Base API URL
+###  Base API URL
 ```
 /api/v3/app
 ```
 
 ---
 
-### 📄 Event Data Model (Schema-Independent)
+###  Event Data Model (Schema-Independent)
 
 ```json
 type:"event"
@@ -122,7 +143,7 @@ attendees: Array of user Id's who is attending the event
 
 ---
 
-## 📌 Event APIs
+##  Event APIs
 
 ### ➕ Create Event
 **POST** `/api/v3/app/events`
@@ -131,18 +152,19 @@ attendees: Array of user Id's who is attending the event
 **Response:**
 ```json
 {
+  "message": "Nudge created successfully",
   "event_id": "65a9f1c9..."
 }
 ```
 
 ---
 
-### 📄 Get Events (Latest + Pagination)
+###  Get Events (Latest + Pagination)
 **GET** `/api/v3/app/events?type=latest&limit=5&page=1`
 
 ---
 
-### 📄 Get Event by ID (Query Param)
+###  Get Event by ID (Query Param)
 **GET** `/api/v3/app/events?id=:event_id`
 
 ---
@@ -169,9 +191,9 @@ attendees: Array of user Id's who is attending the event
 
 ---
 
-## 📘 Task 2 – Nudge API Documentation
+##  Task 2 – Nudge API Documentation
 
-### 🧩 What is a Nudge?
+###  What is a Nudge?
 A **Nudge** is a lightweight content unit used to promote an **event or article** with:
 - Title
 - Image
@@ -182,41 +204,38 @@ A **Nudge** is a lightweight content unit used to promote an **event or article*
 
 ---
 
-### 🧱 Nudge Object Structure
+###  Nudge Object Structure
 
 ```json
-{
-  "type": "nudge",
-  "target_type": "event",
-  "target_id": "65a9f1c9...",
-  "title": "React Workshop",
-  "image": "image_url",
-  "schedule": {
-    "date": "2026-01-05",
-    "from": "10:00",
-    "to": "12:00"
-  },
-  "description": "Join us for React",
-  "icon": "🔥",
-  "invitation_text": "Swipe right to join"
-}
+type:"nudge"
+uid:18 (user id)
+name: Name of the event
+tagline: A proper tag-line for the event
+schedule: (Date + time) Timestamp
+description: String
+files[image]: Image file (File upload)
+moderator: A user who is going to host
+category: Category of the event
+sub_category: Sub category
+rigor_rank: Integer value
+attendees: Array of user Id's who is attending the nudge
 ```
 
 ---
 
-## 📌 Nudge APIs (Documentation)
+##  Nudge APIs (Documentation)
 
 ### ➕ Create Nudge
 **POST** `/api/v3/app/Nudge`
 
 ---
 
-### 📄 Get Nudges
+###  Get Nudges
 **GET** `/api/v3/app/Nudge?page=1&limit=10`
 
 ---
 
-### 📄 Get Nudge by ID
+###  Get Nudge by ID
 **GET** `/api/v3/app/Nudge?id=:nudge_id`
 
 ---
@@ -231,7 +250,7 @@ A **Nudge** is a lightweight content unit used to promote an **event or article*
 
 ---
 
-## 🧠 Design Decisions
+##  Design Decisions
 
 - Schema-less design for flexibility
 - Query-based filtering and pagination
@@ -240,7 +259,7 @@ A **Nudge** is a lightweight content unit used to promote an **event or article*
 
 ---
 
-## 🎯 What This Assignment Demonstrates
+##  What This Assignment Demonstrates
 
 - Ability to **read and understand API documentation**
 - Backend implementation using **MongoDB native driver**
@@ -257,7 +276,7 @@ No frontend is required.
 
 ---
 
-## 📌 Final Note
+##  Final Note
 
 This project follows **real-world backend practices** and matches the **assignment requirements exactly**, making it suitable for **intern evaluation and interviews**.
 
