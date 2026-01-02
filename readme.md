@@ -20,9 +20,8 @@ The project focuses on:
 
 ---
 ## VIDEO EXPLAINATION:
-```
-(https://youtu.be/VhulUaS2sOU)
-```
+
+https://youtu.be/VhulUaS2sOU
 ---
 ##  Project Structure
 
