@@ -60,15 +60,15 @@ npm init -y
 npm install express mongodb dotenv
 ```
 After installation change in `package.json`
-From:
+# From:
 ```bash
 "main": "index.js",
 "scripts": {
 "test": "echo \"Error: no test specified\" && exit 1"
 }
 ```
-TO
-```
+# To:
+```bash
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -126,7 +126,7 @@ Server running on port 3000
 
 ###  Event Data Model (Schema-Independent)
 
-```json
+```bash
 type:"event"
 uid:18 (user id)
 name: Name of the event
@@ -206,7 +206,7 @@ A **Nudge** is a lightweight content unit used to promote an **event or article*
 
 ###  Nudge Object Structure
 
-```json
+```bash
 type:"nudge"
 uid:18 (user id)
 name: Name of the event
@@ -275,8 +275,4 @@ Use **Postman** to test all endpoints.
 No frontend is required.
 
 ---
-
-##  Final Note
-
-This project follows **real-world backend practices** and matches the **assignment requirements exactly**, making it suitable for **intern evaluation and interviews**.
 
