@@ -65,7 +65,6 @@ npm install
 
 ### 3️⃣ Environment variables (`.env`)
 ```env
-PORT=8000
 MONGO_URI=mongodb://127.0.0.1:27017
 DB_NAME=nodebb
 ```
@@ -214,27 +213,27 @@ A **Nudge** is a lightweight content unit used to promote an **event or article*
 ## 📌 Nudge APIs (Documentation)
 
 ### ➕ Create Nudge
-**POST** `/api/v3/app/nudges`
+**POST** `/api/v3/app/events`
 
 ---
 
 ### 📄 Get Nudges
-**GET** `/api/v3/app/nudges?page=1&limit=10`
+**GET** `/api/v3/app/events?page=1&limit=10`
 
 ---
 
 ### 📄 Get Nudge by ID
-**GET** `/api/v3/app/nudges?id=:nudge_id`
+**GET** `/api/v3/app/events?id=:nudge_id`
 
 ---
 
 ### ✏️ Update Nudge
-**PUT** `/api/v3/app/nudges?id=:nudge_id`
+**PUT** `/api/v3/app/events/:nudge_id`
 
 ---
 
 ### ❌ Delete Nudge
-**DELETE** `/api/v3/app/nudges?id=:nudge_id`
+**DELETE** `/api/v3/app/events/:nudge_id`
 
 ---
 
